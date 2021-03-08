@@ -1,0 +1,37 @@
+> library(stringr)
+> library(plyr)
+Warning message:
+package ‘plyr’ was built under R version 4.0.4 
+> library(dplyr)
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:plyr’:
+
+    arrange, count, desc, failwith, id, mutate, rename, summarise, summarize
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+> Assignment.6.Dataset.1 <- read.csv("C:/Users/Brandon/Downloads/Assignment 6 Dataset-1.txt")
+
+// We import the data and find the mean grades based on each sex. 
+
+> ddply(Assignment.6.Dataset.1, "Sex", summarise, Average = mean(Grade))
+     Sex Average
+1 Female 86.9375
+2   Male 80.2500
+> sex = Assignment.6.Dataset.1$Sex
+> sort(sex)
+ [1] "Female" "Female" "Female" "Female" "Female" "Female" "Female" "Female" "Female" "Female" "Female"
+[12] "Female" "Female" "Female" "Female" "Female" "Male"   "Male"   "Male"   "Male"  
+
+> View(Assignment.6.Dataset.1)
+> inames <- Assignment.6.Dataset.1 %>% filter(str_detect(Name, "i"))
+> View(inames)
+> write.csv(inames, "inames.csv")
